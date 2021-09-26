@@ -1,0 +1,17 @@
+lua << EOF
+require('formatter').setup({
+    logging = false,
+    filetype = {
+        rust = {
+            -- Rustfmt
+            function()
+                return {
+                    exe = "rustfmt",
+                    args = {"--emit=stdout"},
+                    stdin = true
+                }
+            end
+            }
+        }
+})
+EOF

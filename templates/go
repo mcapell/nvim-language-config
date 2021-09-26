@@ -1,0 +1,22 @@
+" Toggle expandtab (default is tab -> spaces)
+set invexpandtab
+" Hide tabs as characters
+"set invlist
+
+lua << EOF
+require('formatter').setup({
+    logging = false,
+    filetype = {
+        go = {
+            -- gofmt
+            function()
+                return {
+                    exe = "gofmt",
+                    -- args = {"--emit=stdout"},
+                    stdin = true
+                }
+            end
+            }
+        }
+})
+EOF

@@ -1,0 +1,26 @@
+let test#python#runner = "pytest"
+"let test#python#pytest#options = "--disable-pytest-warnings"
+
+lua << EOF
+require("formatter").setup({
+    logging = false,
+    filetype = {
+        python = {
+            -- isort
+            function()
+                return {
+                    exe = "isort",
+                    stdin = false
+                }
+            end,
+            -- black
+            function()
+                return {
+                    exe = "black",
+                    stdin = false
+                }
+            end
+            }
+        }
+})
+EOF
